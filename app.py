@@ -6,6 +6,8 @@ import matplotlib.dates as mdates
 import os
 import base64
 
+st.title("Uber data EDA")
+
 # ================================================== bg image ==========================
 st.set_page_config(layout="wide")
 
@@ -28,10 +30,20 @@ page_bg_img = f"""
 }}
 </style>
 """
-
 st.markdown(page_bg_img, unsafe_allow_html=True)
+# ================== insights box style ===========================================
+st.markdown("""
+    <style>
+    .insight-box {
+        background-color: rgba(0,0,0,0.6);
+        padding: 15px;
+        border-radius: 10px;
+        color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+# ==================================================================================
 
-st.title("Uber ride data EDA")
 # =================== Loading df =========================================
 df = pd.read_csv(r'Assets\ncr_ride_bookings.csv')
 
@@ -42,10 +54,76 @@ st.dataframe(df.head())
 # =================== Monthly Rides and Booking Value ====================
 st.subheader("▪ Monthly Rides and Booking Value")
 st.image(r'Plots\montly rides vs booking value.png')
+st.markdown("""
+            <div class="insight-box">
+            <ul>
+            <li> Feb & Aug have highest ride bookings.
+            <li> Mar has the lowerst bookings and booking value.
+            <li> Booking Value and number of bookings generally move together, but not always aligned.
+            <li> After Aug peak, there's a consistent decline in rides until Oct.
+            <li> During Dec to Jan, rides continue to fall slightly, while booking value remains relatively stable.
+            </ul>
+            </div>
+""", unsafe_allow_html=True)
 
 # =================== Count Plots ====================
 st.subheader("▪ Count Plots")
 st.image(r'Plots/countplots.png')
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+                <div class="insight-box">
+                <ul>
+                <li>  <b>Booking Status</b>
+                    <ul>
+                    <li> Majority of the bookings are completed
+                    <li> Driver cancellations are higher than customer cancellations
+                    <li> 'No driver found' and 'Incomplete' cases are relatively low.
+                    </ul>
+                <li> <b>Vehicle Type</b>
+                    <ul>
+                    <li> Auto has the highest ride count, followed by Go Mini and Go Sedan.
+                    <li> Uber XL is the least used vehicle type.
+                    <li> Small cars and autos dominate demand.
+                    </ul>
+                <li> <b>Customer Cancellation Reasons</b>
+                    <ul>
+                    <li> Top reasons : 
+                        <ul>
+                        <li> Driver not moving to pickup location
+                        <li> Driver asked to cancel
+                        <li> Wrong adress
+                        <li> Change of plans
+                        </ul>
+                    <li> AC not working is the least common reason.
+                    </ul>
+                </ul>
+                </div>
+    """, unsafe_allow_html=True) 
+
+with col2:
+    st.markdown("""
+                <div class="insight-box">
+                <ul>
+                    <li> <b>Driver Cancellation Reasons</b>
+                    <ul>
+                    <li> All reasons have similar frequency.
+                    <li> No single driver<li>related reason dominates cancellations.
+                    </ul>
+                <li> <b>Incomplete Rides Reasons</b>
+                    <ul>
+                    <li> Vehicle breakdown, other issues and customer demand occur at almost equal levels.
+                    <li> Suggests multiple operational inefficiencies, not just a single bottleneck.
+                    </ul>
+                <li> <b>Payment Method</b>
+                    <ul>
+                    <li> UPI is the most preferred method followed by cash.
+                    <li> Debit card, credit card and wallets are relatively less used.
+                    </ul>
+                </ul>
+                </div>
+    """, unsafe_allow_html=True) 
 
 # =================== Hist Plots ====================
 st.subheader("▪ Hist Plots")
