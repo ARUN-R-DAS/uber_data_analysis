@@ -90,3 +90,31 @@ st.image(r'Plots/top driver cancellation reasons.png')
 # =================== Cancellations by Vehicle Type ====================
 st.subheader("▪ Cancellations by Vehicle Type")
 st.image(r'Plots/cancellation by vehicle type.png')
+
+# =================== Distribution of ratings ====================
+st.subheader("▪ Distribution of Ratings")
+st.image(r'Plots/distribution of ratings.png')
+
+# =================== Distribution of ratings kde ====================
+st.subheader("▪ Distribution of Ratings KDE")
+st.image(r'Plots/driver vs customer ratings kde.png')
+
+# =================== Comparing High vs Low rated rides ====================
+st.subheader("▪ Comparing High vs Low Rated Rides")
+df['High Rating'] = df['Customer Rating'] >= 4
+st.dataframe(
+        df.groupby('High Rating').agg({
+        'Ride Distance':'mean',
+        'Booking Value':'mean',
+        'Cancelled Rides by Customer':'sum',
+        'Cancelled Rides by Driver':'sum'
+    })
+)
+
+# =================== Distance vs customer ratings ====================
+st.subheader("▪ Distance vs customer ratings")
+st.image(r'Plots/ride distance vs customer ratings.png')
+
+# =================== Payment Method vs Booking Value ====================
+st.subheader("▪ Payment Method vs Booking Value")
+st.dataframe(df.groupby('Payment Method')['Booking Value'].mean().reset_index())
