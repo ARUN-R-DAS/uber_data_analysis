@@ -3,6 +3,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.dates as mdates
+import os
+import base64
+
+# ================================================== bg image ==========================
+st.set_page_config(layout="wide")
+
+# Function to encode image file to base64
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# Encode your local image
+bin_str = get_base64_of_bin_file("background.jpg")
+
+# Inject CSS with base64 image
+page_bg_img = f"""
+<style>
+.stApp {{
+  background-image: url("data:image/jpg;base64,{bin_str}");
+  background-size: cover;
+  background-attachment: fixed;
+}}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 
 st.title("Uber ride data EDA")
 # =================== Loading df =========================================
