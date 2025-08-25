@@ -62,3 +62,31 @@ with col1:
 with col2:
     st.write("▪ Least Popular Pickup Locations")
     st.dataframe(location_popularity.tail(10))
+
+# =================== Top 20 Routes ====================
+st.subheader("▪ Top 20 Routes")
+st.image(r'Plots/top 20 pickup_drop routes.png')
+
+# =================== Peak Booking Hours ====================
+st.subheader("▪ Peak Booking Hours")
+st.image(r'Plots/peak booking hours.png')
+
+# =================== Cancellation by Hour ====================
+st.subheader("▪ Cancellation by Hour")
+st.image(r'Plots/cancellation count by hour.png')
+
+# =================== Pie plot : Rides cancelled ====================
+st.subheader("▪ Pie plot : Rides cancelled")
+st.image(r'Plots/pie_rides cancelled.png')
+
+# =================== Top customer cancellation reasons ====================
+st.subheader("▪ Top customer cancellation reasons")
+st.image(r'Plots/top cust cancellation reasons.png')
+
+# =================== Top Driver cancellation reasons ====================
+st.subheader("▪ Top Driver cancellation reasons")
+st.image(r'Plots/top driver cancellation reasons.png')
+
+# =================== Cancellations by Vehicle Type ====================
+st.subheader("▪ Cancellations by Vehicle Type")
+st.image(r'Plots/cancellation by vehicle type.png')
