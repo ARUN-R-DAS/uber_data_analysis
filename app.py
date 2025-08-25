@@ -31,14 +31,13 @@ page_bg_img = f"""
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-
 st.title("Uber ride data EDA")
 # =================== Loading df =========================================
 df = pd.read_csv(r'Assets\ncr_ride_bookings.csv')
 
 # =================== Overview section ===================================
-st.subheader("▪ Dataset")
-st.dataframe(df)
+st.subheader("▪ Dataset Overview")
+st.dataframe(df.head())
 
 # =================== Monthly Rides and Booking Value ====================
 st.subheader("▪ Monthly Rides and Booking Value")
