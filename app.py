@@ -375,13 +375,41 @@ st.markdown("""
 st.subheader("▪ Top customer cancellation reasons")
 st.image(r'Plots/top cust cancellation reasons.png')
 
+st.markdown("""
+             <div class="insight-box">
+                <ul>
+                    <li > Wrong addresses and drivers not heading toward pickup suggest issues with navigation or app accuracy.
+                    <li > "Change of plans" is inevitable, but better scheduling options or cancellation policies might help.
+                    <li > "Driver asked to cancel" is a red flag- possibly indicating poor driver - customer communication or lack of accountability.
+                </ul>
+    """, unsafe_allow_html=True) 
+
 # =================== Top Driver cancellation reasons ====================
 st.subheader("▪ Top Driver cancellation reasons")
 st.image(r'Plots/top driver cancellation reasons.png')
 
+st.markdown("""
+             <div class="insight-box">
+                <ul>
+                    <li > Driver cancellations are not dominated by a single issue but rather spread across multiple recurring concerns.
+                    <li > "Customer was coughing/sick" points to heightened sensitivity around hygiene and safety
+                    <li > Overcrowding and general customer-related issues hint at mismatched expectations or poor communication.
+                    <li > "Personal & Car-related issue" suggests operational gaps like vehicle maintenance or driver availability.
+
+                </ul>
+    """, unsafe_allow_html=True) 
+
 # =================== Cancellations by Vehicle Type ====================
 st.subheader("▪ Cancellations by Vehicle Type")
 st.image(r'Plots/cancellation by vehicle type.png')
+
+st.markdown("""
+             <div class="insight-box">
+                <ul>
+                    <li> Driver-initiated cancellations account for 72% of all ride cancellations, significantly outweighing customer cancellations at 28 %
+                    <li style="color: #e63946"> Introduce driver retention measures: Offer incentives, flexible scheduling or improved ride-matching to reduce cancellation rates and improve reliability.
+                </ul>
+    """, unsafe_allow_html=True) 
 
 # =================== Distribution of ratings ====================
 st.subheader("▪ Distribution of Ratings")
