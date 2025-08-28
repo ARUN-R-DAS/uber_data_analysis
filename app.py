@@ -8,7 +8,7 @@ import base64
 
 st.set_page_config(layout="wide")
 
-st.title("Uber data EDA")
+st.title("Uber data EDA by ARUN R DAS")
 # ================================================== bg image ==========================
 
 # Function to encode image file to base64
@@ -415,9 +415,29 @@ st.markdown("""
 st.subheader("▪ Distribution of Ratings")
 st.image(r'Plots/distribution of ratings.png')
 
+st.markdown("""
+<div class="insight-box">
+            <ul>
+            <li> Customer ratings peak at 5.0, showing a strong tendency toward perfect scores.
+            <li> Driver ratings are more evenly spread, with fewer perfect scores and a gradual rise toward 4.5
+            <li style="color: #e63946"> Prompt customers post-ride with reminders to rate drivers, nudging more 5-star ratings.
+            <li style="color: #e63946"> Analyze driver feedback to uncover why they recieve fewer top ratings.
+            </ul>
+            """, unsafe_allow_html=True)
+
 # =================== Distribution of ratings kde ====================
 st.subheader("▪ Distribution of Ratings KDE")
 st.image(r'Plots/driver vs customer ratings kde.png')
+
+st.markdown("""
+<div class="insight-box">
+            <ul>
+            <li> Driver ratings peak sharply around 4.2, suggesting a consistent but slightly conservative rating pattern.
+            <li> Customer ratings show multiple peaks - around 4.3,4.6 and 4.9 indicating more variability and a tendency toward higher scores.
+            <li style="color: #e63946"> Standardize rating prompts to reduce variability in customer ratings and ensure more consistent feedback.
+            <li style="color: #e63946"> Explore driver performance at peak rating zones to identify what behaviours or experiences lead to higher customer ratings and replicate them across the board. 
+            </ul>
+            """,unsafe_allow_html=True)
 
 # =================== Comparing High vs Low rated rides ====================
 st.subheader("▪ Comparing High vs Low Rated Rides")
@@ -431,10 +451,42 @@ st.dataframe(
     })
 )
 
+st.markdown("""
+<div class="insight-box">
+            <ul>
+            <li> High-rated rides have longer distances(26.04 vs 19.50), suggesting that longer trips may correlate with better experiences.
+            <li> Cancellations are exclusive to low-rated rides, with both customer and driver cancellations significatly higher.
+            <li style="color: #e63946"> Reduce cancellations to boost ratings - focus on improving reliability and communication to prevent ride drop-offs.
+            <li style="color: #e63946"> Analyze long-ride experiences to identify what makes them more satisfying, then apply those learnings to shorter rides.
+            </ul>
+            """,unsafe_allow_html=True)
+
 # =================== Distance vs customer ratings ====================
 st.subheader("▪ Distance vs customer ratings")
 st.image(r'Plots/ride distance vs customer ratings.png')
 
+st.markdown("""
+<div class="insight-box">
+            <ul>
+            <li> Customer ratings remain consistent across all ride distances - no clear upward or downward trend.
+            <li> Dense clustering between 4.0 and 5.0 suggests most rides, regardless of length recieve high ratings.
+            <li style="color: #e63946"> Focus on service quality over ride length - since distance doesn't impact ratings prioritize driver behaviour, comfort and reliability.
+            <li style="color: #e63946"> Segment feedback by rating bands to uncover what differentiates a 4.0 from a 5.0 experience, independent of distance.
+            </ul>
+            """,unsafe_allow_html=True)
+
 # =================== Payment Method vs Booking Value ====================
 st.subheader("▪ Payment Method vs Booking Value")
 st.dataframe(df.groupby('Payment Method')['Booking Value'].mean().reset_index())
+
+st.markdown("""
+<div class="insight-box">
+            <ul>
+            <li> Credit Card users have the highest average booking value, slightly above others.
+            <li> Uber Wallet shows the lowerst booking value, though the difference is marginal.
+            <li> Cash,UPI and Debit Card are all clustered closely around the 507-508 range.
+            <li> Credit card users might be more comfortable spending more - possibly due to rewards, credit flexibility or higher income profiles.
+            <li style="color: #e63946"> Offer targeted promotions for Uber Wallet users to boost their booking value
+            <li style="color: #e63946"> Consider loyalty perks for credit users to reinforce their higher spending behaviour
+            </ul>
+            """,unsafe_allow_html=True)
