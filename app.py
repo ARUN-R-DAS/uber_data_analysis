@@ -53,7 +53,7 @@ st.dataframe(df.head())
 
 # =================== Monthly Rides and Booking Value ====================
 st.subheader("▪ Monthly Rides and Booking Value")
-st.image(r'Plots\montly rides vs booking value.png')
+st.image(r'Plots/montly rides vs booking value.png')
 st.markdown("""
             <div class="insight-box">
             <ul>
