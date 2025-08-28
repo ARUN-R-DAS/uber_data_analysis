@@ -45,7 +45,7 @@ st.markdown("""
 # ==================================================================================
 
 # =================== Loading df =========================================
-df = pd.read_csv(r'Assets\ncr_ride_bookings.csv')
+df = pd.read_csv(r'Assets/ncr_ride_bookings.csv')
 
 # =================== Overview section ===================================
 st.subheader("▪ Dataset Overview")
